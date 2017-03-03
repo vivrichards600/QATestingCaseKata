@@ -1,4 +1,4 @@
-# QATestingCase
+# QA Testing Case Kata
 
 ### QA Engineer assignment
  

@@ -19,5 +19,5 @@ The webdriver-manager is a helper tool to easily get an instance of a Selenium S
 
 1. Open up a new command prompt. Now start up a server with: `webdriver-manager start`
 2. Download this repository
-3. Open up another command prompt and CD to where the conf.js file is the QATestingCaseKata repository
+3. Open up another command prompt and CD to where the conf.js file is in the QATestingCaseKata repository
 4. Run the tests with: `protractor conf.js`

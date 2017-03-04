@@ -12,6 +12,9 @@ var UpdateComputerPage = function() {
 	this.heading = element(by.id('main')).element(by.css('h1'));	
 	this.computerNameInput = element(by.id('name'));
 	this.computerNameError = element(by.css('.clearfix.error'));	
+	this.introducedDateInput = element(by.id('introduced'));
+	this.discontinuedDateInput = element(by.id('discontinued'));
+	this.companySelectList = element(by.id('company'));	
 	this.saveComputerButton = element(by.css('.primary'));
 	this.cancelButton = element.all(by.css('.btn')).last();
 	this.deleteButton = element.all(by.css('.btn.danger')).last();
@@ -47,6 +50,25 @@ describe('Edit computer page', function() {
 		updateComputerPage.saveComputerButton.click();
 		
 		expect(homepage.notificationMessage.getText()).toBe('Done! Computer TestComputer123 has been updated');	
+	});
+	
+	it('should be able to update a computer by inputting valid data in all form fields', function() {
+		var homepage = new Homepage();
+		homepage.get();
+		homepage.filterInput.sendKeys('TestComputer');
+		homepage.filterButton.click();
+		element(by.linkText('TestComputer')).click();
+		
+		var updateComputerPage = new UpdateComputerPage();
+		updateComputerPage.computerNameInput.sendKeys('AllFields');
+		updateComputerPage.introducedDateInput.sendKeys('2017-03-04');
+		updateComputerPage.discontinuedDateInput.sendKeys('2018-03-04');
+		updateComputerPage.companySelectList.$('[value="1"]').click();
+		updateComputerPage.saveComputerButton.click();
+					
+		var homepage = new Homepage();
+		
+		expect(homepage.notificationMessage.getText()).toBe('Done! Computer TestComputerAllFields has been updated');	
 	});
 	
 	it('should display error when updating a computer and not providing a computer name', function() {

@@ -61,7 +61,6 @@ describe('Add a computer page', function() {
 		expect(homepage.heading.getText()).toContain(' computers found');	
 	});
 	
-	
 	it('should be able to add a new computer by inputting valid data in all form fields', function() {
 		var addComputerPage = new AddComputerPage();
 		addComputerPage.get();
@@ -74,6 +73,6 @@ describe('Add a computer page', function() {
 					
 		var homepage = new Homepage();
 		
-		expect(homepage.notificationMessage.getText()).toBe('Done! Computer TestComputer has been created');	
+		expect(homepage.notificationMessage.getText()).toBe('Done! Computer TestComputerAllFields has been created');	
 	});
 });

@@ -9,10 +9,5 @@ config:
 
 scenarios:
   - flow:
-    - post:
-        url: "/computers"
-        json: 
-          name: "LoadTest"
-  - flow:
     - get:
         url: "/computers"

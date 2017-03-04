@@ -1,4 +1,4 @@
-# Run Automation Tests
+# Run Regression Tests
 
 ### Prerequisites
 

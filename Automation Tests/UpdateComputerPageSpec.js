@@ -17,13 +17,13 @@ var UpdateComputerPage = function() {
 	this.deleteButton = element.all(by.css('.btn.danger')).last();
 };
 
-describe('Computers database homepage', function() {
+describe('Edit computer page', function() {
 	beforeEach(function() {
 		// We aren't running Angular so do not want to wait for Angular promises!
 		return browser.ignoreSynchronization = true;
 	});
 
-	it('should be able to view a computer', function() {
+	it('should be able to display a computer', function() {
 		var homepage = new Homepage();
 		homepage.get();
 		homepage.filterInput.sendKeys('TestComputer');
@@ -49,7 +49,7 @@ describe('Computers database homepage', function() {
 		expect(homepage.notificationMessage.getText()).toBe('Done! Computer TestComputer123 has been updated');	
 	});
 	
-	it('should display error when update a computer and not providing a computer name', function() {
+	it('should display error when updating a computer and not providing a computer name', function() {
 		var homepage = new Homepage();
 		homepage.get();
 		homepage.filterInput.sendKeys('TestComputer');
@@ -76,7 +76,7 @@ describe('Computers database homepage', function() {
 		expect(homepage.heading.getText()).toContain(' computers found');	
 	});
 	
-	it('should return to Home page when Delete button clicked whilst viewing a computer', function() {
+	it('should return to Home page when Delete button clicked whilst editing a computer', function() {
 		var homepage = new Homepage();
 		homepage.get();
 		homepage.filterInput.sendKeys('TestComputer');

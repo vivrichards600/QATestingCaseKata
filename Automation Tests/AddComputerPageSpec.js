@@ -5,6 +5,9 @@ var AddComputerPage = function() {
 	this.heading = element(by.id('main')).element(by.css('h1'));	
 	this.computerNameInput = element(by.id('name'));
 	this.computerNameError = element(by.css('.clearfix.error'));	
+	this.introducedDateInput = element(by.id('introduced'));
+	this.discontinuedDateInput = element(by.id('discontinued'));
+	this.companySelectList = element(by.id('company'));	
 	this.createComputerButton = element(by.css('.primary'));
 	this.cancelButton = element.all(by.css('.btn')).last();
 };
@@ -27,7 +30,7 @@ describe('Add a computer page', function() {
 		expect(addComputerPage.heading.getText()).toBe('Add a computer');	
 	});
 	
-	it('should be able to add a new computer', function() {
+	it('should be able to add a new computer only supplying computer name', function() {
 		var addComputerPage = new AddComputerPage();
 		addComputerPage.get();
 
@@ -56,5 +59,21 @@ describe('Add a computer page', function() {
 		
 		var homepage = new Homepage();
 		expect(homepage.heading.getText()).toContain(' computers found');	
+	});
+	
+	
+	it('should be able to add a new computer by inputting valid data in all form fields', function() {
+		var addComputerPage = new AddComputerPage();
+		addComputerPage.get();
+
+		addComputerPage.computerNameInput.sendKeys('TestComputerAllFields');
+		addComputerPage.introducedDateInput.sendKeys('2017-03-04');
+		addComputerPage.discontinuedDateInput.sendKeys('2018-03-04');
+		addComputerPage.companySelectList.$('[value="1"]').click();
+		addComputerPage.createComputerButton.click();
+					
+		var homepage = new Homepage();
+		
+		expect(homepage.notificationMessage.getText()).toBe('Done! Computer TestComputer has been created');	
 	});
 });

@@ -24,7 +24,7 @@ automation project to GitHub.
 
 ### Answers
 
-* `TestCases.od`s workbook contains two work sheets, Test Cases and Bugs. 
+* `TestCases.ods` workbook contains two work sheets, Test Cases and Bugs. 
 * `Automation Tests` folder contains scripts to automate test cases which would be included in a regression test set.
 
 Tests are written in Javascript using protractor.

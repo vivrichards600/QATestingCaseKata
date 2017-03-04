@@ -26,7 +26,7 @@ automation project to GitHub.
 
 * `TestCases.ods` workbook contains two work sheets, Test Cases and Bugs. 
 * `Regressions Tests` folder contains scripts to automate test cases which would be included in a regression test set.
-* `Load Tests` folder contains .yml file to simulate 20 virtual users every second for 60 seconds which will send 20 GET and 20 POST requests each.
+* `Load Tests` folder contains .yml files to simulate 20 virtual users every second for 60 seconds which will send 20 GET and 20 POST requests each.
 
 Regression Tests are written in Javascript using protractor.
 

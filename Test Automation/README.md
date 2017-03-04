@@ -1,20 +1,21 @@
-# QA Testing Case Kata
+### Prerequisites
 
-### QA Engineer assignment
- 
-Please access the following sample application - http://computerdatabase.herokuapp.com/computers
+Protractor is a Node.js program. To run, you will need to have Node.js installed https://nodejs.org/en/. You will download Protractor package using npm, which comes with Node.js. Check the version of Node.js you have by running node --version. Then, check the compatibility notes in the Protractor README to make sure your version of Node.js is compatible with Protractor.
 
-* Create a series of manual test cases that cover the CRUD operation plus the edge cases. Make
-sure you give detailed instructions for each test case (pre conditions, steps, expected results). You
-can use any format you want.
-* Write scripts that would automate the manual test cases that you see fit to be included in a
-regression test set. Please use any of below programming languages:
-  * Javascript (preferred)
-  * Java (preferred)
-  * Python
-  * Ruby
 
-(*Please avoid frameworks that only record test cases.*)
+### Setup
 
-* When the assessment is completed, please push the file containing the manual test cases and the
-automation project to GitHub.
+Use npm to install Protractor globally with: npm install -g protractor
+
+
+This will install two command line tools, protractor and webdriver-manager. Try running protractor --version to make sure it's working.
+
+The webdriver-manager is a helper tool to easily get an instance of a Selenium Server running. Use it to download the necessary binaries with: webdriver-manager update
+
+
+### Running the tests
+
+1. Open up a new command prompt. Now start up a server with: webdriver-manager start
+2. Download this repository
+3. Open up another command prompt and CD to where the conf.js file is the QATestingCaseKata repository
+4. Run the tests with: protractor conf.js

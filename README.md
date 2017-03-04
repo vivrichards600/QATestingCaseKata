@@ -2,7 +2,7 @@
 
 ### QA Engineer assignment
  
-Please access the following sample application - http://computerdatabase.herokuapp.com/computers
+Please access the following sample application - http://computer-database.herokuapp.com/computers
 
 * Create a series of manual test cases that cover the CRUD operation plus the edge cases. Make
 sure you give detailed instructions for each test case (pre conditions, steps, expected results). You

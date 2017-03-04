@@ -8,12 +8,13 @@ var Homepage = function() {
 	this.filterButton = element(by.id('searchsubmit'));
 };
 
-var AddComputerPage = function() { 
+var UpdateComputerPage = function() { 
 	this.heading = element(by.id('main')).element(by.css('h1'));	
 	this.computerNameInput = element(by.id('name'));
 	this.computerNameError = element(by.css('.clearfix.error'));	
 	this.saveComputerButton = element(by.css('.primary'));
 	this.cancelButton = element.all(by.css('.btn')).last();
+	this.deleteButton = element.all(by.css('.btn.danger')).last();
 };
 
 describe('Computers database homepage', function() {
@@ -29,9 +30,9 @@ describe('Computers database homepage', function() {
 		homepage.filterButton.click();
 		element(by.linkText('TestComputer')).click();
 		
-		var addComputerPage = new AddComputerPage();
+		var updateComputerPage = new UpdateComputerPage();
 		
-		expect(addComputerPage.heading.getText()).toBe('Edit computer');	
+		expect(updateComputerPage.heading.getText()).toBe('Edit computer');	
 	});
 	
 	it('should be able to update a computer name', function() {
@@ -41,9 +42,9 @@ describe('Computers database homepage', function() {
 		homepage.filterButton.click();
 		element(by.linkText('TestComputer')).click();
 		
-		var addComputerPage = new AddComputerPage();
-		addComputerPage.computerNameInput.sendKeys('123');
-		addComputerPage.saveComputerButton.click();
+		var updateComputerPage = new UpdateComputerPage();
+		updateComputerPage.computerNameInput.sendKeys('123');
+		updateComputerPage.saveComputerButton.click();
 		
 		expect(homepage.notificationMessage.getText()).toBe('Done! Computer TestComputer123 has been updated');	
 	});
@@ -55,11 +56,11 @@ describe('Computers database homepage', function() {
 		homepage.filterButton.click();
 		element(by.linkText('TestComputer')).click();
 		
-		var addComputerPage = new AddComputerPage();
-		addComputerPage.computerNameInput.clear();
-		addComputerPage.saveComputerButton.click();
+		var updateComputerPage = new UpdateComputerPage();
+		updateComputerPage.computerNameInput.clear();
+		updateComputerPage.saveComputerButton.click();
 		
-		expect(addComputerPage.computerNameError.getText()).toBe('Computer name\nRequired');	
+		expect(updateComputerPage.computerNameError.getText()).toBe('Computer name\nRequired');	
 	});
 	
 	it('should return to Home page when Cancel button clicked whilst updating a computer', function() {
@@ -69,9 +70,22 @@ describe('Computers database homepage', function() {
 		homepage.filterButton.click();
 		element(by.linkText('TestComputer')).click();
 		
-		var addComputerPage = new AddComputerPage();
-		addComputerPage.cancelButton.click();
+		var updateComputerPage = new UpdateComputerPage();
+		updateComputerPage.cancelButton.click();
 		
 		expect(homepage.heading.getText()).toContain(' computers found');	
+	});
+	
+	it('should return to Home page when Delete button clicked whilst viewing a computer', function() {
+		var homepage = new Homepage();
+		homepage.get();
+		homepage.filterInput.sendKeys('TestComputer');
+		homepage.filterButton.click();
+		element(by.linkText('TestComputer')).click();
+		
+		var updateComputerPage = new UpdateComputerPage();
+		updateComputerPage.deleteButton.click();
+		
+		expect(homepage.notificationMessage.getText()).toBe('Done! Computer has been deleted');	
 	});
 });

@@ -2,12 +2,9 @@ var AddComputerPage = function() {
 	this.get = function() {
 		browser.driver.get('http://computer-database.herokuapp.com/computers/new');
 	};
-	
 	this.heading = element(by.id('main')).element(by.css('h1'));	
-	
 	this.computerNameInput = element(by.id('name'));
 	this.computerNameError = element(by.css('.clearfix.error'));	
-	
 	this.createComputerButton = element(by.css('.primary'));
 	this.cancelButton = element.all(by.css('.btn')).last();
 };

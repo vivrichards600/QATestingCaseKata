@@ -52,31 +52,12 @@ describe('Edit computer page', function() {
 		expect(homepage.notificationMessage.getText()).toBe('Done! Computer TestComputer123 has been updated');	
 	});
 	
-	it('should be able to update a computer by inputting valid data in all form fields', function() {
-		var homepage = new Homepage();
-		homepage.get();
-		homepage.filterInput.sendKeys('TestComputer');
-		homepage.filterButton.click();
-		element(by.linkText('TestComputer')).click();
-		
-		var updateComputerPage = new UpdateComputerPage();
-		updateComputerPage.computerNameInput.sendKeys('AllFields');
-		updateComputerPage.introducedDateInput.sendKeys('2017-03-04');
-		updateComputerPage.discontinuedDateInput.sendKeys('2018-03-04');
-		updateComputerPage.companySelectList.$('[value="1"]').click();
-		updateComputerPage.saveComputerButton.click();
-					
-		var homepage = new Homepage();
-		
-		expect(homepage.notificationMessage.getText()).toBe('Done! Computer TestComputerAllFields has been updated');	
-	});
-	
 	it('should display error when updating a computer and not providing a computer name', function() {
 		var homepage = new Homepage();
 		homepage.get();
-		homepage.filterInput.sendKeys('TestComputer');
+		homepage.filterInput.sendKeys('TestComputer123');
 		homepage.filterButton.click();
-		element(by.linkText('TestComputer')).click();
+		element(by.linkText('TestComputer123')).click();
 		
 		var updateComputerPage = new UpdateComputerPage();
 		updateComputerPage.computerNameInput.clear();
@@ -88,9 +69,9 @@ describe('Edit computer page', function() {
 	it('should return to Home page when Cancel button clicked whilst updating a computer', function() {
 		var homepage = new Homepage();
 		homepage.get();
-		homepage.filterInput.sendKeys('TestComputer');
+		homepage.filterInput.sendKeys('TestComputer123');
 		homepage.filterButton.click();
-		element(by.linkText('TestComputer')).click();
+		element(by.linkText('TestComputer123')).click();
 		
 		var updateComputerPage = new UpdateComputerPage();
 		updateComputerPage.cancelButton.click();
@@ -98,12 +79,31 @@ describe('Edit computer page', function() {
 		expect(homepage.heading.getText()).toContain(' computers found');	
 	});
 	
+	it('should be able to update a computer by inputting valid data in all form fields', function() {
+		var homepage = new Homepage();
+		homepage.get();
+		homepage.filterInput.sendKeys('TestComputer123');
+		homepage.filterButton.click();
+		element(by.linkText('TestComputer123')).click();
+		
+		var updateComputerPage = new UpdateComputerPage();
+		updateComputerPage.computerNameInput.sendKeys('AllFields');
+		updateComputerPage.introducedDateInput.sendKeys('2017-03-04');
+		updateComputerPage.discontinuedDateInput.sendKeys('2018-03-04');
+		updateComputerPage.companySelectList.$('[value="1"]').click();
+		updateComputerPage.saveComputerButton.click();
+					
+		var homepage = new Homepage();
+		
+		expect(homepage.notificationMessage.getText()).toBe('Done! Computer TestComputer123AllFields has been updated');	
+	});
+	
 	it('should return to Home page when Delete button clicked whilst editing a computer', function() {
 		var homepage = new Homepage();
 		homepage.get();
-		homepage.filterInput.sendKeys('TestComputer');
+		homepage.filterInput.sendKeys('TestComputer123AllFields');
 		homepage.filterButton.click();
-		element(by.linkText('TestComputer')).click();
+		element(by.linkText('TestComputer123AllFields')).click();
 		
 		var updateComputerPage = new UpdateComputerPage();
 		updateComputerPage.deleteButton.click();

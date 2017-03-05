@@ -1,6 +1,10 @@
-# Run Load Tests
+# Load Tests
 
-Load testing test to load the home page and then add a new computer. Load test creates 20 virtual users every second for 60 seconds which will send 20 GET home page request and 20 POST Add computer requests each. 
+Each load test creates 20 virtual users every second for 60 seconds
+
+* `LoadHomePage.yml` sends a GET request to the home page
+* `AddComputer.yml` sends a POST request to add a new computer
+
 
 ### About Artillery
 
@@ -17,7 +21,7 @@ To check that the installation succeeded, run: `artillery dino`
 ### Running the tests
 
 1. Open a new command prompt and CD to where the LoadTest.yml file is in the QATestingCaseKata\Load Tests repository
-2. Run the tests with: `artillery run LoadTest.yml`
+2. Run the tests with: `artillery run LoadHomePage.yml` or `artillery run AddComputer.yml`
 
 
 ### Load Test Information

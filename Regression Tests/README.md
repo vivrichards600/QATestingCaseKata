@@ -1,4 +1,4 @@
-# Run Regression Tests
+# Regression Tests
 
 ### Prerequisites
 

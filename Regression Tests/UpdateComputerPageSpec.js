@@ -3,7 +3,7 @@ var Homepage = function() {
 		browser.driver.get('http://computer-database.herokuapp.com/computers');
 	};
 	this.heading = element(by.id('main')).element(by.css('h1'));	
-	this.notificationMessage = element(by.css('.alert-message'));	
+	this.notificationMessage = element(by.css('.alert-message.warning'));	
 	this.filterInput = element(by.id('searchbox'));
 	this.filterButton = element(by.id('searchsubmit'));
 };
@@ -15,7 +15,7 @@ var UpdateComputerPage = function() {
 	this.introducedDateInput = element(by.id('introduced'));
 	this.discontinuedDateInput = element(by.id('discontinued'));
 	this.companySelectList = element(by.id('company'));	
-	this.saveComputerButton = element(by.css('.primary'));
+	this.saveComputerButton = element(by.css('.btn.primary'));
 	this.cancelButton = element.all(by.css('.btn')).last();
 	this.deleteButton = element.all(by.css('.btn.danger')).last();
 };
@@ -82,28 +82,29 @@ describe('Edit computer page', function() {
 	it('should be able to update a computer by inputting valid data in all form fields', function() {
 		var homepage = new Homepage();
 		homepage.get();
-		homepage.filterInput.sendKeys('TestComputer123');
+		homepage.filterInput.sendKeys('TestComputerAllFields');
 		homepage.filterButton.click();
-		element(by.linkText('TestComputer123')).click();
+		element(by.linkText('TestComputerAllFields')).click();
 		
 		var updateComputerPage = new UpdateComputerPage();
-		updateComputerPage.computerNameInput.sendKeys('AllFields');
+		updateComputerPage.computerNameInput.clear();
+		updateComputerPage.computerNameInput.sendKeys('TestComputerUpdate');
+		updateComputerPage.introducedDateInput.clear();
 		updateComputerPage.introducedDateInput.sendKeys('2017-03-04');
+		updateComputerPage.discontinuedDateInput.clear();
 		updateComputerPage.discontinuedDateInput.sendKeys('2018-03-04');
-		updateComputerPage.companySelectList.$('[value="1"]').click();
+		updateComputerPage.companySelectList.$('[value="7"]').click();
 		updateComputerPage.saveComputerButton.click();
-					
-		var homepage = new Homepage();
 		
-		expect(homepage.notificationMessage.getText()).toBe('Done! Computer TestComputer123AllFields has been updated');	
+		expect(homepage.notificationMessage.getText()).toBe('Done! Computer TestComputerUpdate has been updated');	
 	});
 	
-	it('should return to Home page when Delete button clicked whilst editing a computer', function() {
+	 it('should return to Home page when Delete button clicked whilst editing a computer', function() {
 		var homepage = new Homepage();
 		homepage.get();
-		homepage.filterInput.sendKeys('TestComputer123AllFields');
+		homepage.filterInput.sendKeys('TestComputerUpdate');
 		homepage.filterButton.click();
-		element(by.linkText('TestComputer123AllFields')).click();
+		element(by.linkText('TestComputerUpdate')).click();
 		
 		var updateComputerPage = new UpdateComputerPage();
 		updateComputerPage.deleteButton.click();
